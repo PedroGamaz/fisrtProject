@@ -1,0 +1,401 @@
+<html>
+
+<head>
+    <title>CRYSTALMINE</title>
+
+
+    <style>
+        .top {
+            display: flex;
+            justify-content: space-between;
+        }
+        body {
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: rgb(154, 255, 255);
+        }
+
+        input {
+            background-color: rgb(255, 255, 255);
+            border: 3px rgb(0, 0, 0) solid;
+            border-radius: 8px;
+            position: static;
+            margin-top: 20px;
+            margin-bottom: 50px;
+            margin-left: 6%;
+            margin-right: 100%;
+            font-family: fantasy;
+            padding: 8px;
+        }
+
+        .border {
+            border-width: 3px;
+            border-radius: 10px;
+            background-color: rgb(255, 255, 255);
+            border-style: outset;
+        }
+
+        header {
+            border-radius: 25px;
+        }
+
+        .title {
+            position: static;
+            margin-top: 100px;
+            margin-bottom: 50px;
+            background-color: rgb(255, 255, 255);
+            margin-left: 20%;
+            margin-right: 20%;
+            text-align: center;
+            color: rgb(0, 0, 0);
+            font-size: 20px;
+            font-family: cursive;
+            font-variant-emoji: #9935;
+            border-style: solid;
+            border-width: 7px;
+            border-radius: 25px;
+        }
+
+        .subtitle {
+            position: static;
+            text-align: center;
+            color: rgb(0, 0, 0);
+            font-size: 20px;
+            font-family: cursive;
+        }
+
+        .result {
+            text-align: right;
+            font-size: 20px;
+            font-family: cursive;
+            font-weight: bold;
+            margin-right: 25%;
+            margin-top: 100px;
+            padding: 5px;
+        }
+
+        label {
+            margin-left: 46px;
+            font-size: larger;
+            font-weight: 700;
+            padding: 5px;
+        }
+
+        .calcule {
+            font-size: 20px;
+            font-family: cursive;
+            font-weight: bold;
+            margin-left: 46px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            padding: 5px;
+        }
+
+        .container {
+            display: flex;
+            height: 25%;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .centralizar {
+            margin-left: 300px;
+        }
+        .coluna {
+            width: 50%;
+            height: 20%;
+        }
+        .colunabaixo {
+            width: 50%;
+        }
+        
+    </style>
+
+    <header>
+        <div class="top">
+            <a href="home.html">Home</a>
+            <a href="pedro.html">Pedro</a>
+        </div>
+        <div class="title">
+
+            <h1>CRYSTALMINE CALCULATOR</h1>
+
+        </div>
+    </header>
+
+    <!-- <div  class="subtitle">
+                <h3>Calcule seu Lucro e Gastos aqui:</h3>
+                
+            </div> -->
+    <!-- <div>
+                <div class="result border container">
+                <scan class="coluna">Resultado: </scan></div>
+        
+                <div  class="Calcule border2 container">
+                <scan class="coluna"> Calcule aqui: </scan>
+                </div> 
+            </div> -->
+</head>
+
+<body>
+
+
+    <div class="container">
+
+        <div class="coluna centralizar">
+
+            <scan class="border Calcule"> Calcule aqui: </scan>
+
+
+        </div>
+
+        <div class="coluna centralizar">
+
+            <scan class="border result">Resultado: </scan>
+
+
+
+
+        </div>
+
+    </div>
+
+
+    <div class="inputs">
+
+
+        <div class="colunabaixo">
+            <!-- <h3>Pedro</h3> -->
+            <label for="mine"  class="border">Quanto você recebe por mine?</label>
+            <input type="number" id="formatadoteste" size="10" placeholder="Ex:2" name="mine" />
+
+            <label for="periodo"  class="border">Por qual período você resgata o dinheiro?</label>
+            <input type="number" id="formatado1" size="10" placeholder="Ex:3.5" name="periodo" />
+
+            <label for="aluguel"  class="border">Quanto você paga de aluguel?</label>
+            <input type="number" id="formatado2" size="10" placeholder="Ex:1.5" name="aluguel" />
+
+            <label for="periodo_dia"  class="border">Por qual período você gostaria de calcular em dias?</label>
+            <input type="number" id="vezes_receber" size="10" placeholder="Ex:30" name="periodo_dia" />
+
+        </div>
+
+        <div class="colunabaixo">
+
+            <div><p  class="border calculoresult"> Vezes por mes recebidas: </p></div>
+            <div><p  id="output_vezes_mes" class="border calculoresult"></p></div>
+
+            <div><p class="border calculoresult"> Lucro:</p></div>
+            <div><p id="output_lucro_mes" class="border calculoresult"></p></div>
+           
+            <div><p class="border calculoresult"> Lucro Bruto:</p></div>
+            <div><p id="output_renda_bruta" class="border calculoresult"></p></div>
+
+            <div><p class="border calculoresult"> Gastos com aluguel: </p></div>
+            <div><p id="output_gasto_aluguel" class="border calculoresult"></p></div>
+            
+            <!-- <div><p  class="border calculoresult"> teste:</p></div>
+            <div><p  id="print" class="border calculoresult"> teste:</p></div> -->
+            
+
+        </div>
+        <!-- <input type="date" placeholder="Henrique é foda" /> -->
+
+
+    </div>
+    <div>
+        <!-- botao -->
+
+        <style>
+            .inputs {
+                display: flex;
+                
+
+                /* flex-wrap: wrap; */
+                /* background-color: blueviolet; */
+                /*tirar o comment dwpois para visualizar o flex*/
+
+            }
+
+            .calculoresult {
+                margin-bottom: 30px;
+                margin-right: 200px;
+                margin-left: 140px;
+                font-size: larger;
+                font-weight: 700;
+                padding: 5px;
+
+            }
+
+            .botaoc {
+                background-color: rgb(52, 255, 79);
+                font-weight: bolder;
+                color: rgb(0, 0, 0);
+                width: 100px;
+                height: 50px;
+                margin-left: 46%;
+                border: 3px solid black;
+                border-radius: 16px;
+                cursor: pointer;
+                box-shadow: 6px 6px 12px #f0f0f0;
+
+
+            }
+
+            a {
+
+                font-weight: bolder;
+                padding: 10px;
+                color: black;
+                background-color: aliceblue;
+                border: 2px solid black;
+                border-radius: 5px;
+                text-decoration: none;
+            }
+        </style>
+    </div>
+    <div>
+        <button class="botaoc" id="buttonC" > CALCULAR </button>
+    </div>
+    <div>
+        <a href="home.html">Sair</a>
+    </div>
+
+    <script>
+
+    
+    function formatacao(texto) {
+        let valor = texto.value.replace(',', '.');
+        let formatado = parseFloat(valor);
+
+        if (formatado <= 0 || isNaN(formatado)) {
+            alert('Valor inválido');
+        } else {
+            return formatado;
+        }
+    }
+
+    let buttonC = document.getElementById('buttonC');
+
+    buttonC.addEventListener('click', function() {
+        let formatadoteste = formatacao(document.getElementById('formatadoteste'));
+        let formatado1 = formatacao(document.getElementById('formatado1'));
+        let formatado2 = formatacao(document.getElementById('formatado2'));
+        let vezes_receber = formatacao(document.getElementById('vezes_receber'));
+        // let print = (document.getElementById('print'));
+
+        let vezes_mes = vezes_receber / formatado1;
+        let lucro_mes = formatadoteste * vezes_mes - formatado2 * 3;
+        let renda_bruta = formatadoteste * vezes_mes;
+        let gasto_aluguel = (vezes_receber / 10) * formatado2;
+
+        let output_vezes_mes = document.getElementById('output_vezes_mes');
+        let output_lucro_mes = document.getElementById('output_lucro_mes');
+        let output_renda_bruta = document.getElementById('output_renda_bruta');
+        let output_gasto_aluguel = document.getElementById('output_gasto_aluguel');
+
+        // if (lucro_mes < formatado2 * 3) {
+        // console.log('Você está perdendo dinheiro');
+        // } else if (lucro_mes > formatado2 * 3) {
+        // console.log('Você está tendo lucro');
+        // }
+
+        output_vezes_mes.textContent = vezes_mes;
+        output_lucro_mes.textContent = lucro_mes;
+        output_renda_bruta.textContent = renda_bruta;
+        output_gasto_aluguel.textContent = gasto_aluguel;
+        // print.textContent = print;
+       
+        
+    });
+
+    
+   
+
+    </script>
+
+    <script>
+        // function formatacao(texto) {
+        //     while (true) {
+        //         let valor = (texto);
+        //         let numero_formatado = valor.replace(',', '.');
+        //         let formatado = parseFloat(numero_formatado);
+
+        //         if (parseFloat(numero_formatado) <= 0 || isNaN(formatado)) {
+        //             alert('Valor inválido');
+        //         } else {
+        //             return formatado;
+        //         }
+        //     }
+        // }
+
+        // let formatadoteste = formatacao(document.getElementById('formatadoteste'));
+
+        // let formatado1 = formatacao(document.getElementById('formatado1'));
+
+        // let formatado2 = formatacao(document.getElementById('formatado2'));
+
+        // let vezes_receber = formatacao(document.getElementById('vezes_receber'));
+
+        // let buttonC = document.getElementById('buttonC');
+
+        // let output_vezes_mes = document.getElementById('output_vezes_mes')
+
+        // let output_lucro_mes = document.getElementById('output_lucro_mes')
+
+        // let output_renda_bruta = document.getElementById('output_renda_bruta')
+
+        // let output_gasto_aluguel = document.getElementById('output_gasto_aluguel')
+
+        // buttonC.addEventListener('click', function(){ //colocar embaixo do processo depois, olhar o de teste
+
+        // let vezes_mes = parseInt(vezes_receber) / formatado1.value;
+        // // console.log('Vezes por mês');
+        // // console.log(vezes_mes);
+        
+
+        // let lucro_mes = formatadoteste * vezes_mes - formatado2 * 3;
+        // // console.log('Retorno');
+        // // console.log(lucro_mes);
+
+        // let renda_bruta = formatadoteste * vezes_mes;
+        // // console.log('Renda Bruta');
+        // // console.log(renda_bruta);
+
+        // let gasto_aluguel = (parseInt(vezes_receber.value) / 10) * formatado2;
+        // // console.log('Gastos com aluguel');
+        // // console.log(gasto_aluguel);
+
+        // output_vezes_mes.textContent = vezes_mes;
+        // output_lucro_mes.textContent = lucro_mes;
+        // output_renda_bruta.textContent = renda_bruta;
+        // output_gasto_aluguel.textContent = gasto_aluguel;
+
+
+        // let input_vezes_mes = vezes_mes.value;
+        // let result_vezes_mes = input_vezes_mes;
+        // output_vezes_mes.textContent = result_vezes_mes;
+
+        // let input_lucro_mes = lucro_mes.value;
+        // let result_lucro_mes = input_lucro_mes;
+        // output_lucro_mes.textContent = result_lucro_mes;
+
+        // let input_renda_bruta = renda_bruta.value;
+        // let result_renda_bruta = input_renda_bruta;
+        // output_renda_bruta.textContent = result_renda_bruta;
+
+        // let input_gasto_aluguel = gasto_aluguel.value;
+        // let result_gasto_aluguel = input_gasto_aluguel;
+        // output_gasto_aluguel.textContent = result_gasto_aluguel;
+
+        //     if (lucro_mes < formatado2 * 3) {
+        //         console.log('Você está perdendo dinheiro');
+        //     } else if (lucro_mes > formatado2 * 3) {
+        //         console.log('Você está tendo lucro');
+        //     }
+        // });
+// comparar com o test.html para correção desse codigo, teste ok!
+    </script>
+</body>
+
+</html>

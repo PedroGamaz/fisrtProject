@@ -1,0 +1,83 @@
+body{
+    margin: 0;
+}
+.sidebar {
+    width: 200px;
+    background-color: #350ec3;
+    height: 100vh;
+    float: left;
+    padding: 20px;
+}
+
+.sidebar ul {
+list-style: none;
+}
+
+.sidebar ul li {
+margin: 0 10px;
+}
+
+.sidebar ul li a {
+color: black;
+font-family: Arial;
+font-size: 16px;
+}
+.sidebar .hamburger {
+display: none;
+width: 20px;
+height: 20px;
+background-color: black;
+border-radius: 50%;
+cursor: pointer;
+}
+
+.sidebar .hamburger:before,
+.sidebar .hamburger:after {
+content: "";
+position: absolute;
+top: 50%;
+left: 50%;
+width: 10px;
+height: 4px;
+background-color: rgb(149, 69, 69);
+transform: translate(-50%, -50%);
+transition: transform 0.2s;
+}
+
+.sidebar .hamburger:before {
+transform: rotate(45deg);
+}
+
+.sidebar .hamburger:after {
+transform: rotate(-45deg);
+}
+
+.sidebar .hamburger:hover {
+transform: translate(-50%, -50%) rotate(0);
+}
+@media (max-width: 500px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        float: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 100;
+    }
+
+    .sidebar .hamburger {
+        display: block;
+    }
+
+    .sidebar ul {
+        display: none;
+    }
+
+    .sidebar:hover ul {
+        display: block;
+    }
+}
+.flex{
+    display: flexbox;
+}
