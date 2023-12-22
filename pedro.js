@@ -1,4 +1,3 @@
-console.log("Olá, mundo!");
 let modal = document.getElementById("modal")
 let close = document.getElementById("close")
 close.addEventListener("click", function(){

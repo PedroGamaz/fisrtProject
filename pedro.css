@@ -73,6 +73,25 @@ body{
         width: 100%;
         height: 100%;
     }
+    .flexSubModal{
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+        background-color: #8ecae6;
+    }
+    .topModal{  
+        max-height: 8%;
+        width: 100%;
+    }
+    .bottomModal{
+        max-height: 10%;
+        width: 100%;
+    }
+    #close{
+        min-width: 15%;
+    }
 }
 .top{
     width: 100%;
@@ -143,6 +162,7 @@ body{
 }
 .bottomContainer{
     display: flex;
+    align-items: center;
     justify-content: space-between;
     width: calc(100VW - 62px);
     height: 100%;
@@ -294,8 +314,8 @@ a:hover{
     z-index: 10;
 }
 .subModal{
-    height: 50vh;
-    width: 50vw;
+    height: 60vh;
+    width: 60vw;
     background-color: rgb(255, 255, 255);
     z-index: 12;
 }
@@ -313,10 +333,72 @@ a:hover{
     height: 100%;
     width: 100%;
 }
+.flexSubModal{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+    background-color: #8ecae6;
+}
+.topModal{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 10%;
+    background-color: #023047;
+}
+.bottomModal{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 15%;
+    width: 100%;
+    background-color: #023047;
+}
+.bottomModalContainer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    width: 95%;
+}
 #close{
     cursor: pointer;
-    height: 5vh;
-    width: 5vw;
+    height: 100%;
+    width: 10%;
     align-items: end;
     padding: 5px;
+    float: right;
+}
+.contentModal{
+    overflow: auto;
+    word-wrap: break-word;
+    background-color: #8ecae6;
+    height: 100%;
+    width: 100%;
+}
+.modalSpan{
+    font-size: 1.5rem;
+    color: white;
+}
+.flexBtnModalTop{
+    width: 100%;
+}
+.modulo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 1rem;
+}
+.buttonModal{
+    cursor: pointer;
+    background-color: #ffb700;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    border: 2px solid black;
+    border-radius: 7px;
+}
+.buttonModal:hover{
+    background-color: #ffca44;
 }
