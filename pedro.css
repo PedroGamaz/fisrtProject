@@ -282,3 +282,41 @@ a:hover{
     color: aliceblue;
     background-color: #023047;
  }
+ .modal{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 10;
+}
+.subModal{
+    height: 50vh;
+    width: 50vw;
+    background-color: rgb(255, 255, 255);
+    z-index: 12;
+}
+.fundoModal{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: #cfcfcf;
+    opacity: 0.5;
+    z-index: 11;
+}
+.imgModal{
+    height: 100%;
+    width: 100%;
+}
+#close{
+    cursor: pointer;
+    height: 5vh;
+    width: 5vw;
+    align-items: end;
+    padding: 5px;
+}
