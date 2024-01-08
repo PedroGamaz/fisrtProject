@@ -4,16 +4,17 @@
   "description": "",
   "main": "node.js",
   "scripts": {
-    "start": "nodemon node.js"
+    "start": "node node.js",
+    "dev": "nodemon ./node.js"
   },
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "nodemon": "1.18.4"
-  },
   "dependencies": {
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
-    "mongoose": "^6.12.4"
+    "pg": "^8.11.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
   }
 }
