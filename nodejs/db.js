@@ -20,13 +20,14 @@ async function connect() {
 }
 
 connect();
-
-async function selectCustomers() {
+//buscando todas as tasks
+async function selectTasks() {
   const client = await connect();
   const res = await client.query("SELECT * FROM task");
   return res.rows;
 }
 
+// criando task
 async function postTasks() {
   const client = await connect();
   const res = await client.query(
@@ -38,30 +39,31 @@ async function postTasks() {
 //connection pool conceito de conexão com o banco de dados
 
 // buscando task por id no banco
-async function selectCustomer(taskid) {
+async function selectTask(taskid) {
   const client = await connect();
-  const res = await client.query("SELECT * FROM task WHERE id=$1", [
-    taskid,
-  ]);
+  const res = await client.query(`SELECT * FROM task WHERE id = ${taskid}`);
   return res.rows;
 }
 
-async function putTasks(id) {
-  const task = await connect();
-  const res = await task.query("UPDATE task SET title = 'update' WHERE id = '5';", [id]);
+// atualizando a task by id
+async function putTasks(taskid) {
+  const client = await connect();
+  const res = await client.query(
+    `UPDATE task SET title = 'update2' WHERE id = ${taskid}`
+  );
   return res.rows;
 }
 
-// função de deletar tarefa pelo id precisa instalar alguma parada
-async function deleteCustomer(taskid) {
+// deletando tesk by id da rota
+async function deleteTask(taskid) {
   const client = await connect();
-  return await client.query("DELETE FROM * task WHERE id=$1", [taskid]);
+  return await client.query(`DELETE FROM task WHERE id = ${taskid}`);
 }
 
 module.exports = {
-  selectCustomers,
-  selectCustomer,
-  deleteCustomer,
+  selectTasks,
+  selectTask,
   postTasks,
   putTasks,
+  deleteTask,
 };
