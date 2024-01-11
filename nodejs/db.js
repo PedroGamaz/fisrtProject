@@ -60,10 +60,49 @@ async function deleteTask(taskid) {
   return await client.query(`DELETE FROM task WHERE id = ${taskid}`);
 }
 
+// CRUD USERS
+
+async function selectUsers() {
+  const user = await connect();
+  const res = await user.query(`SELECT * FROM usuarios`);
+  return res.rows;
+}
+
+async function selectUser(userid) {
+  const user = await connect();
+  const res = await user.query(`SELECT * FROM usuarios WHERE id = ${userid}`);
+  return res.rows;
+}
+
+async function postUser() {
+  const user = await connect();
+  const res = await user.query(
+    `INSERT INTO usuarios (username, senha) VALUES ('Henqiue', '123456asd')`
+  );
+  return res.rows;
+}
+
+async function putUser(userid) {
+  const user = await connect();
+  const res = await user.query(
+    `UPDATE usuarios SET username = 'mariano' WHERE id = ${userid}`
+  );
+  return res.rows;
+}
+
+async function deleteUser(userid) {
+  const user = await connect();
+  return await user.query(`DELETE FROM usuarios WHERE id = ${userid}`);
+}
 module.exports = {
   selectTasks,
   selectTask,
   postTasks,
   putTasks,
   deleteTask,
+  selectUsers,
+  selectUser,
+  postUser,
+  putUser,
+  deleteUser,
 };

@@ -2,4 +2,3 @@ node_modules
 .env
 module
 src
-person.js

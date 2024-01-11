@@ -11,13 +11,18 @@ const db = require("./db");
 const port = process.env.PORT;
 
 const express = require("express");
+
+const cors = require("cors");
 const app = express();
 
-app.use(express.json());
+// app.use(express.json());
+app.use(cors());
 app.get("/", (req, res) => res.json({ message: "Funcionando!" }));
 
 app.listen(port);
 console.log("API funcionando!");
+
+// CRUD TASK
 
 app.get("/task", async (req, res) => {
   const tasks = await db.selectTasks();
@@ -47,6 +52,38 @@ app.delete("/task/:taskid", async (req, res) => {
   await db.deleteTask(req.params.taskid);
   res.sendStatus(204);
   console.log("delete task");
+});
+
+// CRUD USER
+
+app.get("/user", async (req, res) => {
+  const user = await db.selectUsers();
+  res.json(user);
+  console.log("usuários buscados");
+});
+
+app.get("/user/:userid", async (req, res) => {
+  const user = await db.selectUser(req.params.userid);
+  res.json(user);
+  console.log("usuário buscado by id");
+});
+
+app.post("/user", async (req, res) => {
+  const user = await db.postUser();
+  res.json(user);
+  console.log("Usuario criado");
+});
+
+app.put("/user/:userid", async (req, res) => {
+  const user = await db.putUser(req.params.userid);
+  res.json(user);
+  console.log("usuario atualizado!");
+});
+
+app.delete("/user/:userid", async (req, res) => {
+  await db.deleteUser(req.params.userid);
+  res.sendStatus(204);
+  console.log("usuario deletado!");
 });
 
 // app.get("/task/:taskid", async (req, res) => {
