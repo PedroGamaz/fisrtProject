@@ -37,7 +37,7 @@ app.get("/task/:taskid", async (req, res) => {
 });
 
 app.post("/task", async (req, res) => {
-  const task = await db.postTasks();
+  const task = await db.postTasks(req.params.title);
   res.json(task);
   console.log("task criada");
 });

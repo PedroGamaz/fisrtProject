@@ -1,0 +1,21 @@
+body{
+    padding: 15px;
+}
+
+.hide{
+    display: none;
+}
+
+a, input[type="submit"]{
+    padding: 10px, 20px;
+    cursor: pointer;
+}
+a:hover,input[type="submit"]{
+    background-color: blue;
+}
+#button{
+    padding: 10px;
+}
+.flex{
+    display: flex;
+}

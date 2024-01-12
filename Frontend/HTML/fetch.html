@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../CSS/fetch.css" />
+    <script src="../JAVASCRIPT/fetch.js" defer>
+      //defer faz com que o html seja carregado primeiro que o javascript
+    </script>
+  </head>
+  <body>
+    <form action="" method="get">
+      <div>
+        <h1>teste</h1>
+        <div class="flex">
+          <input id="id" type="number" />
+        </div>
+      </div>
+      <hr />
+      <div>
+        <h1>filtro</h1>
+        <label for="title">title</label>
+        <input type="checkbox" name="title" id="title" />
+        <label for="description">description</label>
+        <input type="checkbox" name="description" id="description" />
+        <label for="observation">observation</label>
+        <input type="checkbox" name="observation" id="observation" />
+      </div>
+      <hr />
+      <div>
+        <button id="button">Search</button>
+        <button id="button">create</button>
+      </div>
+    </form>
+    <pre id="content"></pre>
+    <div>
+      <table id="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Observation</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </body>
+</html>

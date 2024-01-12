@@ -28,10 +28,10 @@ async function selectTasks() {
 }
 
 // criando task
-async function postTasks() {
+async function postTasks(title) {
   const client = await connect();
   const res = await client.query(
-    "INSERT INTO task (title, description, observation, deadline) VALUES ('consulta', 'ir de carro', 'levar dinheiro', '2024-01-12')"
+    `INSERT INTO task (title, description, observation, deadline) VALUES (${title}, 'ir de carro', 'levar dinheiro', '2024-01-12')`
   );
   return res.rows;
 }
