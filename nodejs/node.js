@@ -11,11 +11,13 @@ const db = require("./db");
 const port = process.env.PORT;
 
 const express = require("express");
+const bodyParser = require("body-parser");
 
 const cors = require("cors");
 const app = express();
 
-// app.use(express.json());
+app.use(express.json());
+// app.use(bodyParser.json());
 app.use(cors());
 app.get("/", (req, res) => res.json({ message: "Funcionando!" }));
 
@@ -37,9 +39,13 @@ app.get("/task/:taskid", async (req, res) => {
 });
 
 app.post("/task", async (req, res) => {
-  const task = await db.postTasks(req.params.title);
-  res.json(task);
-  console.log("task criada");
+  console.log(req.body)
+  const title = req.body.title;
+  const description = req.body.description;
+  const observation = req.body.observation;
+  const task = await db.postTasks(title, description, observation);
+  // res.json(task);
+  console.log("task criada!");
 });
 
 app.put("/task/:taskid", async (req, res) => {
