@@ -63,7 +63,7 @@ save.addEventListener("click", function (e){
 
   const data = { title, description, observation }
   const body = JSON.stringify(data)
-  console.log(body)
+
   fetch("http://localhost:8080/task", {
     method: "POST",
     headers: {
@@ -81,9 +81,59 @@ save.addEventListener("click", function (e){
   modal.style.display = "none"
 })
 
-
+// FAZER AMANHA FAZER A FETCH DAR UM GET E APARECER OS VALORES QUE PEGA
+//DO BANCO NO LABEL TIPO A TABELA QUE HENRIQUE FEZ
 fetch(url)
   .then((res) => res.json())
   .then(function (dataObject) {
     console.log(dataObject);
+
+
+    // for (let task of dataObject){
+    //   let title = task.title
+    //   let description = task.description
+    //   let observation = task.observation
+
+    //   const labelTitle = document.createElement('labelTitle')
+    //   labelTitle.textContent = title;
+
+    //   const labelDescription = document.createElement('labelDescrption')
+    //   labelDescription.textContent = description;
+
+    //   const labelObservation = document.createElement('labelObservation')
+    //   labelObservation.textContent = observation;
+
+    //   // labelTitle.appendChild(title)
+    //   // labelDescription.appendChild(description)
+    //   // labelObservation.appendChild(observation)
+    //   const taskElement = document.createElement(".gridChild");
+    //   taskElement.appendChild(labelTitle); // Adicione o labelTitle ao elemento da tarefa
+    //   taskElement.appendChild(labelDescription); // Adicione o labelDescription ao elemento da tarefa
+    //   taskElement.appendChild(labelObservation); // Adicione o labelObservation ao elemento da tarefa
+
+    //   document.querySelector(".gridChild").appendChild(taskElement);
+    // }
+
+ 
+    //for (foreach(task) of dataObject)
+    const gridChildTemplate = `
+      <div class="gridChild">
+        <label>${title}</label>
+        <label>${description}</label>
+        <label>${observation}</label>
+      </div>
+    `;
+
+  const grid = document.getElementById("grid");
+
+  dataObject.forEach((task) => {
+    console.log(task)
+    const gridChild = document.createElement("div");
+    gridChild.innerHTML = gridChildTemplate;
+    gridChild.classList.add("gridChild");
+
+    grid.appendChild(gridChild);
   });
+});
+
+

@@ -1,11 +1,20 @@
 #grid{
     display: grid;
-    margin-top: 50px;
-    height: 50vh;
+    margin-top: 30px;
+    max-width: 100vw;
+    height: 85vh;
     gap: 10px;
     grid-template-columns: auto auto auto auto;
+    overflow: auto;
 }
 .gridChild{
+    max-height: 30vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.5rem;
+    padding: 15px;
     background-color: aquamarine;
     border: 1px solid black;
 }

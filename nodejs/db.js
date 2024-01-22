@@ -34,7 +34,7 @@ async function postTasks(title, description, observation) {
     observation,)
   const client = await connect();
   const res = await client.query(
-    `INSERT INTO task (title, description, observation, deadline) VALUES ('${title}', '${description}', '${observation}', '2024-01-12')`
+    `INSERT INTO task (title, description, observation, deadline) VALUES ('${title}', '${description}', '${observation}', 'NOW()')`
   );
   return res.rows;
 }
