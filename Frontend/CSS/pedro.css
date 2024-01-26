@@ -320,7 +320,7 @@ a:hover{
     
  }
  .contentChild2{
-    
+    border-radius: 0px 0px 5px 5px;
     font-size: 1.3rem;
     padding: 5px;
     color: aliceblue;
@@ -460,4 +460,7 @@ a:hover{
 .label{
     font-size: 1rem;
     font-weight: bolder;
+}
+#modalEdit{
+    display: none;
 }

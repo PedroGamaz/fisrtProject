@@ -18,7 +18,7 @@ const titleGet = document.getElementById("title");
 const descriptionGet = document.getElementById("description");
 const observationGet = document.getElementById("observation");
 const form = document.getElementById("form");
-
+let modalEdit = document.getElementById("modalEdit");
 
 let grid = document.getElementById("grid");
 // let button = document.getElementById("button");
@@ -64,25 +64,29 @@ save.addEventListener("click", async function (e) {
     body: body,
   });
   //passar o codigo para o pedro.js e depois tentar resolver isso abaixo
-  let newTask = await resp.json()
-  console.log(newTask)
+  let newTask = await resp.json();
+  console.log(newTask);
 
   let newGridChild = document.createElement("div");
   newGridChild.innerHTML = `
-  <label>${newTask.task.title}</label>
-  <label>${newTask.task.description}</label>
-  <label>${newTask.task.observation}</label>
-  `;
+  <div class="gridChild contentContainer">
+        <div class="contentChild">
+            <label>${newTask.task.title}</label>
+        </div>
+        <div class="contentChild1">
+            <label>${newTask.task.description}</label>
+        </div>
+        <div class="contentChild2">
+        <label>${newTask.task.observation}</label>
+        </div>
+        </div>
+        `;
   newGridChild.classList.add("gridChild");
   grid.appendChild(newGridChild);
   newGridChild.style.display = "block";
   modal.style.display = "none";
-
-  
 });
 
-// FAZER AMANHA FAZER A FETCH DAR UM GET E APARECER OS VALORES QUE PEGA
-//DO BANCO NO LABEL TIPO A TABELA QUE HENRIQUE FEZ
 fetch(url)
   .then((res) => res.json())
   .then(function (dataObject) {
@@ -90,11 +94,13 @@ fetch(url)
 
     const grid = document.getElementById("grid");
 
-    dataObject.forEach((task) => {
+    dataObject.forEach((task, index) => {
       // console.log(task);
+      console.log(index);
+
       const gridChild = document.createElement("div");
       gridChild.innerHTML = `
-      <div class="gridChild contentContainer">
+      <div class="gridChild contentContainer" id="gridChild_${index + 1}">
         <div class="contentChild">
             <label>${task.title}</label>
         </div>
@@ -108,9 +114,39 @@ fetch(url)
       `;
       gridChild.classList.add("gridChild");
 
+      gridChild.addEventListener("click", function (e) {
+        e.preventDefault();
+        console.log(task);
+        console.log("Teste" + (index + 1));
+
+        let inputTitle = document.getElementById("titleEdit");
+        inputTitle.value = task.title;
+        modalEdit.style.display = "flex";
+      });
+
       grid.appendChild(gridChild);
     });
   });
 
-  //terminar as partes do CRUD editar e excluir
-  //após isso comear a ver o crud do usuário
+//terminar as partes do CRUD editar e excluir
+//após isso comear a ver o crud do usuário
+
+//quando clicar ni gridChild (card)
+//abrir tela de edição = dialog de cadastro com as informações
+let gridChild = document.querySelector(".gridChild");
+gridChild.addEventListener("click", function (e) {
+  e.preventDefault();
+  modalEdit.style.display = "flex";
+});
+
+let btnCloseEdit = document.getElementById("btnCloseEdit");
+btnCloseEdit.addEventListener("click", function (e) {
+  e.preventDefault();
+  modalEdit.style.display = "none";
+});
+
+let btnEdit = document.getElementById("btnEdit");
+btnEdit.addEventListener("click", function (e) {
+  e.preventDefault();
+  modalEdit.style.display = "none";
+});
