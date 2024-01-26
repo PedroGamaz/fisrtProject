@@ -26,50 +26,18 @@
                 <div class="mainFlexModal">
                     <div class="contentModal">
                         <div class=" flexInput">
-                            <label for="">Título da Atividade</label>
-                            <input class="input" type="text">
-                        </div >
-                        <div class=" flexInput">
-                            <label for="">Data de Prazo</label>
-                            <input class="input" type="date" name="" id="">
+                            <label for="TitleLabel">Título da Atividade</label>
+                            <input class="input" type="text" id="title">
                         </div>
                         <div class=" flexInput">
-                            <label for="">Tipo de Atividade</label>
-                            <input class="input" type="text">
+                            <label for="descriptionLabel">Descrição da Atividade</label>
+                            <input class="input" type="text" id="description">
                         </div>
                         <div class=" flexInput">
-                            <label for="">Data de Prazo</label>
-                            <input class="input" type="date" name="" id="">
+                            <label for="observationLabel">Observação</label>
+                            <input class="input" type="textarea" id="observation">
                         </div>
-                        <div class=" flexInput">
-                            <label for="">Tipo de Atividade</label>
-                            <input class="input" type="text">
-                        </div>
-                        <div class=" flexInput">
-                            <label for="">Data de Prazo</label>
-                            <input class="input" type="date" name="" id="">
-                        </div>
-                        <div class=" flexInput">
-                            <label for="">Tipo de Atividade</label>
-                            <input class="input" type="text">
-                        </div>
-                        <div class=" flexInput">
-                            <label for="">Data de Prazo</label>
-                            <input class="input" type="date" name="" id="">
-                        </div>
-                        <div class=" flexInput">
-                            <label for="">Tipo de Atividade</label>
-                            <input class="input" type="text">
-                        </div>
-                        <div class=" flexInput">
-                            <label for="">Data de Prazo</label>
-                            <input class="input" type="date" name="" id="">
-                        </div>
-                        <div class=" flexInput">
-                            <label for="">Tipo de Atividade</label>
-                            <input class="input" type="text">
-                        </div>
-                        <div class=" flexInput">
+                        <!-- <div class=" flexInput">
                             <label for="">Responsável</label>
                             <select class="input" name="" id="">
                                 <option value=""></option>
@@ -83,13 +51,13 @@
                         <div class=" flexInput">
                             <label for="">Descrição da Tarefa</label>
                             <textarea class="input" name="" id="" cols="" rows=""></textarea>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <div class="bottomModal">
                     <div class="bottomModalContainer">
-                        <div><button id="buttonModal"><span>Cancel</span></button></div>
-                        <div><button id="buttonModal"><span>Save</span></button></div>
+                        <div><button id="close" class="buttonModal"><span>Cancel</span></button></div>
+                        <div><button id="save" class="buttonModal"><span>Save</span></button></div>
                     </div>
                 </div>
             </div>
@@ -117,91 +85,20 @@
                     </div>
                     <div>
                         <div class="top2">
-                            <div class="content gridContainer">
+                            <div class="content gridContainer" id="grid">
                                 <!-- <div class=""> -->
                                     <div class="gridChild contentContainer">
                                         
-                                        <div class="contentChild"><span class="mainText">main</span></div>
-                                        <div class="contentChild1"><span class="subText">subMain</span></div>
-                                        <div class="contentChild2">Type</div>
+                                        <div class="contentChild">
+                                            <label id="labelTitle"  class="mainText">title</label>
+                                        </div>
+                                        <div class="contentChild1">
+                                            <label id="labelDescription" class="subText">description</label>
+                                        </div>
+                                        <div class="contentChild2">
+                                            <label id="labelObservation">observation</label>
+                                        </div>
                                     </div>
-                                    <div class="gridChild contentContainer">
-                                        <div class="contentChild"><span class="mainText">main</span></div>
-                                        <div class="contentChild1"><span class="subText">subMain</span></div>
-                                        <div class="contentChild2">Type</div>
-                                    </div>
-                                    <div class="gridChild contentContainer">
-                                        <div class="contentChild"><span class="mainText">main</span></div>
-                                        <div class="contentChild1"><span class="subText">subMain</span></div>
-                                        <div class="contentChild2">Type</div>
-                                    </div>
-                                    <div class="gridChild contentContainer">
-                                        <div class="contentChild"><span class="mainText">main</span></div>
-                                        <div class="contentChild1"><span class="subText">subMain</span></div>
-                                        <div class="contentChild2">Type</div>
-                                    </div>
-                                    <div class="gridChild contentContainer">
-                                        <div class="contentChild"><span class="mainText">main</span></div>
-                                        <div class="contentChild1"><span class="subText">subMain</span></div>
-                                        <div class="contentChild2">Type</div>
-                                    </div>
-                                    <div class="gridChild contentContainer">
-                                        <div class="contentChild"><span class="mainText">main</span></div>
-                                        <div class="contentChild1"><span class="subText">subMain</span></div>
-                                        <div class="contentChild2">Type</div>
-                                    </div>
-                                    <div class="gridChild contentContainer">
-                                        <div class="contentChild"><span class="mainText">main</span></div>
-                                        <div class="contentChild1"><span class="subText">subMain</span></div>
-                                        <div class="contentChild2">Type</div>
-                                    </div><div class="gridChild contentContainer">
-                                        <div class="contentChild"><span class="mainText">main</span></div>
-                                        <div class="contentChild1"><span class="subText">subMain</span></div>
-                                        <div class="contentChild2">Type</div>
-                                    </div>
-                                    <div class="gridChild contentContainer">
-                                        <div class="contentChild"><span class="mainText">main</span></div>
-                                        <div class="contentChild1"><span class="subText">subMain</span></div>
-                                        <div class="contentChild2">Type</div>
-                                    </div>
-                                    <div class="gridChild contentContainer">
-                                        <div class="contentChild"><span class="mainText">main</span></div>
-                                        <div class="contentChild1"><span class="subText">subMain</span></div>
-                                        <div class="contentChild2">Type</div>
-                                    </div>
-                                    <div class="gridChild contentContainer">
-                                        <div class="contentChild"><span class="mainText">main</span></div>
-                                        <div class="contentChild1"><span class="subText">subMain</span></div>
-                                        <div class="contentChild2">Type</div>
-                                    </div>
-                                    <div class="gridChild contentContainer">
-                                        <div class="contentChild"><span class="mainText">main</span></div>
-                                        <div class="contentChild1"><span class="subText">subMain</span></div>
-                                        <div class="contentChild2">Type</div>
-                                    </div>
-                                    <div class="gridChild contentContainer">
-                                        <div class="contentChild"><span class="mainText">main</span></div>
-                                        <div class="contentChild1"><span class="subText">subMain</span></div>
-                                        <div class="contentChild2">Type</div>
-                                    </div>
-                                    <div class="gridChild contentContainer">
-                                        <div class="contentChild"><span class="mainText">main</span></div>
-                                        <div class="contentChild1"><span class="subText">subMain</span></div>
-                                        <div class="contentChild2">Type</div>
-                                    </div>
-                                    <div class="gridChild contentContainer">
-                                        <div class="contentChild"><span class="mainText">main</span></div>
-                                        <div class="contentChild1"><span class="subText">subMain</span></div>
-                                        <div class="contentChild2">Type</div>
-                                    </div>
-                                    <div class="gridChild contentContainer">
-                                        <div class="contentChild"><span class="mainText">main</span></div>
-                                        <div class="contentChild1"><span class="subText">subMain</span></div>
-                                        <div class="contentChild2">Type</div>
-                                    </div>
-                                    
-                                    
-                                <!-- </div> -->
                             </div>
                         </div>
                     </div>
@@ -212,7 +109,7 @@
                             <button class="buttonBottom" >Home</button>
                         </div>
                         <div>
-                            <button class="buttonBottom botao" id="btn">Create</button>
+                            <button class="buttonBottom botao" id="openModal">Create</button>
                         </div>
                     </div>
                 </div>

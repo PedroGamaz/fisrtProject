@@ -428,7 +428,7 @@ a:hover{
     justify-content: center;
     padding-left: 1rem;
 }
-#buttonModal{
+.buttonModal{
     cursor: pointer;
     height: 5vh;
     width: 7vw;
@@ -443,7 +443,7 @@ a:hover{
     font-size: medium;
     font-weight: bolder;
 }
-#buttonModal:hover{
+.buttonModal:hover{
     background-color: #ffca44;
     transition: background-color .40s;
 }

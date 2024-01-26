@@ -4,7 +4,7 @@
     max-width: 100vw;
     height: 85vh;
     gap: 10px;
-    grid-template-columns: auto auto auto auto;
+    grid-template-columns: repeat(4, 1fr);
     overflow: auto;
 }
 .gridChild{
@@ -42,4 +42,7 @@
     background-color: #cfcfcf;
     opacity: 0.5;
     z-index: 11;
+}
+label{
+    font-size: 1.5rem;
 }

@@ -29,14 +29,14 @@ async function selectTasks() {
 
 // criando task
 async function postTasks(title, description, observation) {
-  console.log(title,
-    description,
-    observation,)
   const client = await connect();
   const res = await client.query(
-    `INSERT INTO task (title, description, observation, deadline) VALUES ('${title}', '${description}', '${observation}', 'NOW()')`
+    `INSERT INTO task (title, description, observation, deadline) VALUES ('${title}', '${description}', '${observation}', 'NOW()') RETURNING id`
   );
-  return res.rows;
+  let id = res.rows[0].id
+  const selectId = await client.query(`SELECT * FROM task WHERE id = ${id}`)
+  let resId = selectId.rows[0]
+  return resId;
 }
 
 //connection pool conceito de conexão com o banco de dados

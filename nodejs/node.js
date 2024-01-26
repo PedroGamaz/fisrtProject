@@ -39,13 +39,13 @@ app.get("/task/:taskid", async (req, res) => {
 });
 
 app.post("/task", async (req, res) => {
-  console.log(req.body)
+  console.log(req.body);
   const title = req.body.title;
   const description = req.body.description;
   const observation = req.body.observation;
   const task = await db.postTasks(title, description, observation);
-  // res.json(task);
   console.log("task criada!");
+  res.status(200).json({ task });
 });
 
 app.put("/task/:taskid", async (req, res) => {
