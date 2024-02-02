@@ -400,7 +400,7 @@ a:hover{
     height: 100%;
     width: 10%;
     align-items: end;
-    padding: 5px;
+    padding: 10px;
     float: right;
 }
 .contentModal{
@@ -413,13 +413,16 @@ a:hover{
     height: 100%;
     width: 100%;
 }
-
+.labelModal{
+    font-size: 1.3rem;
+    padding: 5px;
+}
 .modalSpan{
     font-size: 1.5rem;
     color: white;
 }
 .flexBtnModalTop{
-    width: 100%;
+    width: 80%;
     height: 100%;
 }
 .modulo{
@@ -456,6 +459,7 @@ a:hover{
     height: 5vh;
     border: 2px solid grey;
     border-radius: 8px;
+    font-size: larger;
 }
 .label{
     font-size: 1rem;
@@ -463,4 +467,60 @@ a:hover{
 }
 #modalEdit{
     display: none;
+}
+#btnCloseEdit{
+    cursor: pointer;
+    height: 100%;
+    width: 10%;
+    align-items: end;
+    padding: 5px;
+    float: right;
+}
+#btnDelete{
+    display: none;
+    cursor: pointer;
+    height: 5vh;
+    width: 7vw;
+    max-width: 110px;
+    min-width: 60px;
+    background-color: #ff0000;
+    /* padding: 0.5rem; */
+    margin: 0.5rem;
+    border: 2px solid black;
+    box-shadow: 3px 3px;
+    border-radius: 7px;
+    font-size: medium;
+    font-weight: bolder;
+}
+#btnDelete:hover{
+    background-color: #f84343;
+    transition: background-color .40s;
+}
+#iconDelete{
+    cursor: pointer;
+    height: 5vh;
+    width: 3vw;
+    max-width: 110px;
+    min-width: 60px;
+    background-color: #ff0000;
+    /* padding: 0.5rem; */
+    margin: 0.5rem;
+    border: 2px solid black;
+    box-shadow: 3px 3px;
+    border-radius: 7px;
+    font-size: medium;
+    font-weight: bolder;
+}
+#iconDelete:hover{
+    background-color: #f84343;
+    transition: background-color .40s;
+}
+#imgDelete{
+    height: 50%;
+    width: 50%;
+}
+.flexBtnModal{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

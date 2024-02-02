@@ -48,8 +48,15 @@ app.post("/task", async (req, res) => {
   res.status(200).json({ task });
 });
 
-app.put("/task/:taskid", async (req, res) => {
-  const task = await db.putTasks(req.params.taskid);
+app.put("/task", async (req, res) => {
+  // console.log(req.body);
+  let { id,titleEditValue, descriptionEditValue, observationEditValue } = req.body
+
+  // let id = req.body.id;
+  // let titleEditValue = req.body.titleEditValue;
+  // let descriptionEditValue = req.body.descriptionEditValue;
+  // let observationEditValue = req.body.observationEditValue;
+  const task = await db.putTasks(id, titleEditValue, descriptionEditValue, observationEditValue);
   res.json(task);
   console.log("update task");
 });

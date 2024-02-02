@@ -15,8 +15,8 @@
             <div class="flexSubModal">
                 <div class="topModal">
                     <div class="modulo">
-                        <div>
-                            <span class="modalSpan">Módulo</span>
+                        <div class="modalSpan">
+                            <span class="modalSpan">Create Task</span>
                         </div>
                     </div>
                     <div class="flexBtnModalTop">
@@ -56,7 +56,7 @@
                 </div>
                 <div class="bottomModal">
                     <div class="bottomModalContainer">
-                        <div><button id="close" class="buttonModal"><span>Cancel</span></button></div>
+                        <div><button id="cancel" class="buttonModal"><span>Cancel</span></button></div>
                         <div><button id="save" class="buttonModal"><span>Save</span></button></div>
                     </div>
                 </div>
@@ -71,32 +71,36 @@
                 <div class="topModal">
                     <div class="modulo">
                         <div>
-                            <span class="modalSpan">Módulo</span>
+                            <span class="modalSpan">Edit Task</span>
                         </div>
                     </div>
                     <div class="flexBtnModalTop">
-                        <button id="close"><img class="imgModal" src="../assets/icons/xmark-solid.svg" alt=""></button>
+                        <button id="btnCloseEdit"><img class="imgModal" src="../assets/icons/xmark-solid.svg" alt=""></button>
                     </div>
                 </div>
                 <div class="mainFlexModal">
-                    <div class="contentModal">
+                    <div id="contentModal" class="contentModal">
                         <div class=" flexInput">
-                            <label for="TitleLabel">Título da Atividade</label>
+                            <label for="TitleLabel" class="labelModal">Título da Atividade</label>
                             <input class="input" type="text" id="titleEdit">
                         </div>
                         <div class=" flexInput">
-                            <label for="descriptionLabel">Descrição da Atividade</label>
+                            <label for="descriptionLabel" class="labelModal">Descrição da Atividade</label>
                             <input class="input" type="text" id="descriptionEdit">
                         </div>
                         <div class=" flexInput">
-                            <label for="observationLabel">Observação</label>
+                            <label for="observationLabel" class="labelModal">Observação</label>
                             <input class="input" type="textarea" id="observationEdit">
                         </div>
                     </div>
                 </div>
                 <div class="bottomModal">
                     <div class="bottomModalContainer">
-                        <div><button id="btnCloseEdit" class="buttonModal"><span>Cancel</span></button></div>
+                        <div class="flexBtnModal">
+                            <button id="btnCancelEdit" class="buttonModal"><span>Cancel</span></button>
+                            <button id="iconDelete" ><img id="imgDelete" src="../assets/icons/trash-can-solid.svg" alt=""></button>
+                            <button id="btnDelete" ><span>Delete</span></button>
+                        </div>
                         <div><button id="btnEdit" class="buttonModal"><span>Save</span></button></div>
                     </div>
                 </div>
@@ -121,24 +125,12 @@
             <div class="mainContainer">
                 <div>
                     <div>
-                        <div class="top"><p style="margin: 0; padding: 5px 5px 5px 15px;">MÓDULO</p></div>
+                        <div class="top"><p style="margin: 0; padding: 5px 5px 5px 15px; font-size: 1.3rem;">Tasks</p></div>
                     </div>
                     <div>
                         <div class="top2">
                             <div class="content gridContainer" id="grid">
-                                <!-- <div class=""> -->
-                                    <div class="gridChild contentContainer">
-                                        
-                                        <div class="contentChild">
-                                            <label id="labelTitle"  class="mainText">title</label>
-                                        </div>
-                                        <div class="contentChild1">
-                                            <label id="labelDescription" class="subText">description</label>
-                                        </div>
-                                        <div class="contentChild2">
-                                            <label id="labelObservation">observation</label>
-                                        </div>
-                                    </div>
+            
                             </div>
                         </div>
                     </div>

@@ -23,7 +23,7 @@ connect();
 //buscando todas as tasks
 async function selectTasks() {
   const client = await connect();
-  const res = await client.query("SELECT * FROM task");
+  const res = await client.query("SELECT * FROM task ORDER BY id DESC");
   return res.rows;
 }
 
@@ -33,9 +33,9 @@ async function postTasks(title, description, observation) {
   const res = await client.query(
     `INSERT INTO task (title, description, observation, deadline) VALUES ('${title}', '${description}', '${observation}', 'NOW()') RETURNING id`
   );
-  let id = res.rows[0].id
-  const selectId = await client.query(`SELECT * FROM task WHERE id = ${id}`)
-  let resId = selectId.rows[0]
+  let id = res.rows[0].id;
+  const selectId = await client.query(`SELECT * FROM task WHERE id = ${id}`);
+  let resId = selectId.rows[0];
   return resId;
 }
 
@@ -49,11 +49,24 @@ async function selectTask(taskid) {
 }
 
 // atualizando a task by id
-async function putTasks(taskid) {
+async function putTasks(
+  id,
+  titleEditValue,
+  descriptionEditValue,
+  observationEditValue
+) {
+  const sql =
+    `UPDATE task 
+  SET title = '` +
+    titleEditValue +
+    `', 
+  description = '${descriptionEditValue}', 
+  observation = '${observationEditValue}' 
+  WHERE id = ${id}
+  RETURNING *`;
+  console.log(sql);
   const client = await connect();
-  const res = await client.query(
-    `UPDATE task SET title = 'update2' WHERE id = ${taskid}`
-  );
+  const res = await client.query(sql);
   return res.rows;
 }
 

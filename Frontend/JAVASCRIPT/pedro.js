@@ -46,6 +46,11 @@ close.addEventListener("click", function () {
   modal.style.display = "none";
 });
 
+let cancel = document.getElementById("cancel");
+cancel.addEventListener("click", function () {
+  modal.style.display = "none";
+});
+
 //botao salvar fecha dialog e adiciona um gridChild por enquanto
 let save = document.getElementById("save");
 save.addEventListener("click", async function (e) {
@@ -96,11 +101,14 @@ fetch(url)
 
     dataObject.forEach((task, index) => {
       // console.log(task);
-      console.log(index);
-
+      // console.log(index);
+      // console.log(task.id);
+      exports = {
+        task
+      }
       const gridChild = document.createElement("div");
       gridChild.innerHTML = `
-      <div class="gridChild contentContainer" id="gridChild_${index + 1}">
+      <div class="gridChild contentContainer" id="gridChild_${index + 1} data-id="${task.id}">
         <div class="contentChild">
             <label>${task.title}</label>
         </div>
@@ -116,13 +124,59 @@ fetch(url)
 
       gridChild.addEventListener("click", function (e) {
         e.preventDefault();
-        console.log(task);
-        console.log("Teste" + (index + 1));
+        // console.log(task);
+        // console.log("Teste" + (index + 1));
 
         let inputTitle = document.getElementById("titleEdit");
         inputTitle.value = task.title;
+
+        let inputDescription = document.getElementById("descriptionEdit");
+        inputDescription.value = task.description;
+
+        let inputObservation = document.getElementById("observationEdit");
+        inputObservation.value = task.observation;
         modalEdit.style.display = "flex";
-      });
+
+        // pegando valores dos inputs do modalEdit
+        // let titleEdit = document.getElementById("titleEdit");
+        // let titleEditValue = titleEdit.value;
+        // let descriptionEdit = document.getElementById("descriptionEdit");
+        // let descriptionEditValue = descriptionEdit.value;
+        // let observationEdit = document.getElementById("observationEdit");
+        // let observationEditValue = observationEdit.value;
+
+        let id = task.id;
+        // pegar id e enviar para o put no back
+
+          let btnEdit = document.getElementById("btnEdit");
+          btnEdit.addEventListener("click", function (e) {
+            e.preventDefault();
+            let titleEdit = document.getElementById("titleEdit");
+            let titleEditValue = titleEdit.value;
+            let descriptionEdit = document.getElementById("descriptionEdit");
+            let descriptionEditValue = descriptionEdit.value;
+            let observationEdit = document.getElementById("observationEdit");
+            let observationEditValue = observationEdit.value;
+
+            let data = {
+              id,
+              titleEditValue,
+              descriptionEditValue,
+              observationEditValue,
+            };
+            const body = JSON.stringify(data);
+            console.log(body);
+            fetch(url, {
+              method: "PUT",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: body, //fazer put de uma determinada task no caso aberta
+            });
+
+            modalEdit.style.display = "none";
+          });
+        });
 
       grid.appendChild(gridChild);
     });
@@ -133,20 +187,49 @@ fetch(url)
 
 //quando clicar ni gridChild (card)
 //abrir tela de edição = dialog de cadastro com as informações
-let gridChild = document.querySelector(".gridChild");
-gridChild.addEventListener("click", function (e) {
+// let gridChild = document.querySelector(".gridChild");
+let btnCancelEdit = document.getElementById("btnCancelEdit");
+btnCancelEdit.addEventListener("click", function (e) {
   e.preventDefault();
-  modalEdit.style.display = "flex";
+  if (isVisible = true){
+    btnDelete.style.display = "none" 
+    isVisible = false;
+  }
+  modalEdit.style.display = "none";
 });
 
 let btnCloseEdit = document.getElementById("btnCloseEdit");
 btnCloseEdit.addEventListener("click", function (e) {
   e.preventDefault();
+  if (isVisible = true){
+    btnDelete.style.display = "none" 
+    isVisible = false;
+  }
   modalEdit.style.display = "none";
 });
 
-let btnEdit = document.getElementById("btnEdit");
-btnEdit.addEventListener("click", function (e) {
+let btnDelete = document.getElementById("btnDelete")
+let iconDelete = document.getElementById("iconDelete");
+
+let isVisible = false;
+
+iconDelete.addEventListener("click", function (e) {
   e.preventDefault();
-  modalEdit.style.display = "none";
+  if (isVisible) {
+    btnDelete.style.display = "none";
+    isVisible = false;
+  } else {
+    btnDelete.style.display = "block";
+    isVisible = true;
+  }
 });
+
+btnDelete.addEventListener("click", function (e){
+  e.preventDefault()
+  fetch()
+  // pegar id da task aberta no dialog para mandar para o back 
+  // DELETE task WHERE ${id} dar um jeito de puxar o id somente de cadas task quando div de gridchild e clicada
+})
+
+// FAZER UM FETCH PUT MESMA COISA DO POST SEM MISTERIO
+// POREM FAZER COM QUE CLIQUE NO DIV E ABRA O DIALOG DE EDIÇÃO E ON LICK FUNCTION AO BOTAO SALVAR
