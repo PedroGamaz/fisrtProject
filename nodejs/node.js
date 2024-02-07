@@ -57,12 +57,13 @@ app.put("/task", async (req, res) => {
   // let descriptionEditValue = req.body.descriptionEditValue;
   // let observationEditValue = req.body.observationEditValue;
   const task = await db.putTasks(id, titleEditValue, descriptionEditValue, observationEditValue);
-  res.json(task);
+  res.status(200).json({ task });
   console.log("update task");
 });
 
-app.delete("/task/:taskid", async (req, res) => {
-  await db.deleteTask(req.params.taskid);
+app.delete("/task", async (req, res) => {
+  const id = req.body.id;
+  await db.deleteTask(id);
   res.sendStatus(204);
   console.log("delete task");
 });

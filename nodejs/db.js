@@ -71,9 +71,9 @@ async function putTasks(
 }
 
 // deletando tesk by id da rota
-async function deleteTask(taskid) {
+async function deleteTask(id) {
   const client = await connect();
-  return await client.query(`DELETE FROM task WHERE id = ${taskid}`);
+  return await client.query(`DELETE FROM task WHERE id = ${id}`);
 }
 
 // CRUD USERS

@@ -145,7 +145,7 @@ fetch(url)
         // let observationEdit = document.getElementById("observationEdit");
         // let observationEditValue = observationEdit.value;
 
-        let id = task.id;
+        let id = task.id
         // pegar id e enviar para o put no back
 
           let btnEdit = document.getElementById("btnEdit");
@@ -171,11 +171,37 @@ fetch(url)
               headers: {
                 "Content-Type": "application/json",
               },
-              body: body, //fazer put de uma determinada task no caso aberta
+              body: body, 
             });
-
+            // console.log(task)
+            //pegar valor dos inputs depois do PUT e colocar no gridchild para nao precisar dar um F5 
+            titleEdit.value = titleEdit
+            descriptionEdit.value = descriptionEdit
+            observationEdit.value = observationEdit
             modalEdit.style.display = "none";
           });
+          btnDelete.addEventListener("click", function (e){
+            e.preventDefault()
+            // import {task} from dataObject
+            let id = task.id
+            let data = {
+              id,
+            };
+            const body = JSON.stringify(data);
+            console.log(body);
+            fetch(url, {
+              method: "DELETE",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: body, 
+            });
+            btnDelete.style.display = "none";
+            modalEdit.style.display = "none";
+            gridChild.style.display = "none";
+            // pegar id da task aberta no dialog para mandar para o back 
+            // DELETE task WHERE ${id} dar um jeito de puxar o id somente de cadas task quando div de gridchild e clicada
+          })
         });
 
       grid.appendChild(gridChild);
@@ -220,16 +246,12 @@ iconDelete.addEventListener("click", function (e) {
     isVisible = false;
   } else {
     btnDelete.style.display = "block";
+    console.log("clickIconDel")
     isVisible = true;
   }
 });
 
-btnDelete.addEventListener("click", function (e){
-  e.preventDefault()
-  fetch()
-  // pegar id da task aberta no dialog para mandar para o back 
-  // DELETE task WHERE ${id} dar um jeito de puxar o id somente de cadas task quando div de gridchild e clicada
-})
 
-// FAZER UM FETCH PUT MESMA COISA DO POST SEM MISTERIO
-// POREM FAZER COM QUE CLIQUE NO DIV E ABRA O DIALOG DE EDIÇÃO E ON LICK FUNCTION AO BOTAO SALVAR
+
+
+
