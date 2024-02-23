@@ -57,7 +57,7 @@ app.put("/task", async (req, res) => {
   // let descriptionEditValue = req.body.descriptionEditValue;
   // let observationEditValue = req.body.observationEditValue;
   const task = await db.putTasks(id, titleEditValue, descriptionEditValue, observationEditValue);
-  res.status(200).json({ task });
+  res.status(200).json( task );
   console.log("update task");
 });
 

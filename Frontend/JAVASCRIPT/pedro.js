@@ -1,17 +1,3 @@
-// let modal = document.getElementById("modal")
-// let close = document.getElementById("close")
-// close.addEventListener("click", function(){
-//     modal.style.display = "none"
-// })
-// let btn = document.getElementById("save")
-// btn.addEventListener("click", function(){
-//     modal.style.display = "flex"
-// })
-// let closeBtn = document.getElementById("buttonModal")
-// closeBtn.addEventListener("click", function(){
-//     modal.style.display = "none"
-// })
-// colocar interação no botão de save também ajeitar as interações dos botões até ir embora para começar com o modal fechado
 
 const url = "http://localhost:8080/task";
 const titleGet = document.getElementById("title");
@@ -21,14 +7,6 @@ const form = document.getElementById("form");
 let modalEdit = document.getElementById("modalEdit");
 
 let grid = document.getElementById("grid");
-// let button = document.getElementById("button");
-
-// button.addEventListener("click", () => {
-//   let newGridChild = document.createElement("div");
-//   newGridChild.classList.add("gridChild");
-
-//   grid.appendChild(newGridChild);
-// });
 
 // dialog
 let modal = document.getElementById("modal");
@@ -45,7 +23,7 @@ let close = document.getElementById("close");
 close.addEventListener("click", function () {
   modal.style.display = "none";
 });
-
+// botao cancelar
 let cancel = document.getElementById("cancel");
 cancel.addEventListener("click", function () {
   modal.style.display = "none";
@@ -61,6 +39,7 @@ save.addEventListener("click", async function (e) {
   const data = { title, description, observation };
   const body = JSON.stringify(data);
 
+  //fetch criação
   let resp = await fetch(url, {
     method: "POST",
     headers: {
@@ -72,6 +51,7 @@ save.addEventListener("click", async function (e) {
   let newTask = await resp.json();
   console.log(newTask);
 
+  // adicionando um card na tela quando uma task é criada
   let newGridChild = document.createElement("div");
   newGridChild.innerHTML = `
   <div class="gridChild contentContainer">
@@ -92,6 +72,8 @@ save.addEventListener("click", async function (e) {
   modal.style.display = "none";
 });
 
+
+// fetch get all tasks
 fetch(url)
   .then((res) => res.json())
   .then(function (dataObject) {
@@ -99,6 +81,7 @@ fetch(url)
 
     const grid = document.getElementById("grid");
 
+    // para cada task criar uma div (card)
     dataObject.forEach((task, index) => {
       // console.log(task);
       // console.log(index);
@@ -122,7 +105,9 @@ fetch(url)
       `;
       gridChild.classList.add("gridChild");
 
-      gridChild.addEventListener("click", function (e) {
+
+      // abrindo o modal e pegando os valores do input para printar na tela
+      gridChild.addEventListener("click", async function (e) {
         e.preventDefault();
         // console.log(task);
         // console.log("Teste" + (index + 1));
@@ -145,11 +130,19 @@ fetch(url)
         // let observationEdit = document.getElementById("observationEdit");
         // let observationEditValue = observationEdit.value;
 
+        // dar um fetch para receber os dados de um gridchild pq ta pegando os valores anteriores ao put
+
+        // let resGetId = await fetch(`http://localhost:8080/task/${task.id}`)
+        // let taskEdit = await resGetId.json();
+        //   console.log(taskEdit);
+
         let id = task.id
         // pegar id e enviar para o put no back
 
+
+          //atualizando os dados do card clicado
           let btnEdit = document.getElementById("btnEdit");
-          btnEdit.addEventListener("click", function (e) {
+          btnEdit.addEventListener("click", async function (e) {
             e.preventDefault();
             let titleEdit = document.getElementById("titleEdit");
             let titleEditValue = titleEdit.value;
@@ -158,6 +151,9 @@ fetch(url)
             let observationEdit = document.getElementById("observationEdit");
             let observationEditValue = observationEdit.value;
 
+            
+            const gridchildElement = document.getElementById("gridchild");
+
             let data = {
               id,
               titleEditValue,
@@ -165,21 +161,48 @@ fetch(url)
               observationEditValue,
             };
             const body = JSON.stringify(data);
-            console.log(body);
-            fetch(url, {
+            // console.log(bodyEdit);
+            let resEdit = await fetch(url, {
               method: "PUT",
               headers: {
                 "Content-Type": "application/json",
               },
               body: body, 
             });
+            // gridchildElement.style.display = "none";
+            let taskEdit = await resEdit.json();
+            
             // console.log(task)
             //pegar valor dos inputs depois do PUT e colocar no gridchild para nao precisar dar um F5 
-            titleEdit.value = titleEdit
-            descriptionEdit.value = descriptionEdit
-            observationEdit.value = observationEdit
             modalEdit.style.display = "none";
+            console.log(task);
+            console.log(taskEdit);
+      
+
+            // adicionando um novo card quando o put termina 
+            // const gridChildEdit = document.createElement("div");
+            gridChild.innerHTML = `
+            <div class="gridChild contentContainer" id="gridChild_${index + 1} data-id="${task.id}">
+              <div class="contentChild">
+                  <label>${taskEdit[0].title}</label>
+              </div>
+              <div class="contentChild1">
+                  <label>${taskEdit[0].description}</label>
+              </div>
+              <div class="contentChild2">
+                  <label>${taskEdit[0].observation}</label>
+              </div>
+            </div>
+            `;
+            
+            // analisar isso
+            gridChild.classList.add("gridChild");
+            titleEdit.value = taskEdit[0].title
+            descriptionEdit.value = taskEdit[0].description
+            observationEdit.value = taskEdit[0].observation
           });
+
+          // deletando task ver de limpar a variavel
           btnDelete.addEventListener("click", function (e){
             e.preventDefault()
             // import {task} from dataObject
@@ -188,7 +211,7 @@ fetch(url)
               id,
             };
             const body = JSON.stringify(data);
-            console.log(body);
+            // console.log(body);
             fetch(url, {
               method: "DELETE",
               headers: {
@@ -196,6 +219,9 @@ fetch(url)
               },
               body: body, 
             });
+ 
+            // delete [data]
+            // console.log(data)
             btnDelete.style.display = "none";
             modalEdit.style.display = "none";
             gridChild.style.display = "none";
@@ -213,6 +239,7 @@ fetch(url)
 
 //quando clicar ni gridChild (card)
 //abrir tela de edição = dialog de cadastro com as informações
+
 // let gridChild = document.querySelector(".gridChild");
 let btnCancelEdit = document.getElementById("btnCancelEdit");
 btnCancelEdit.addEventListener("click", function (e) {
