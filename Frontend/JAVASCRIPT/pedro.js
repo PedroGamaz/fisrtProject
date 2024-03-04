@@ -172,12 +172,10 @@ fetch(url)
             // gridchildElement.style.display = "none";
             let taskEdit = await resEdit.json();
             
-            // console.log(task)
+            
             //pegar valor dos inputs depois do PUT e colocar no gridchild para nao precisar dar um F5 
             modalEdit.style.display = "none";
-            console.log(task);
-            console.log(taskEdit);
-      
+            // jogar taskEdit para os valores do input quando abre o modal
 
             // adicionando um novo card quando o put termina 
             // const gridChildEdit = document.createElement("div");
@@ -200,6 +198,9 @@ fetch(url)
             titleEdit.value = taskEdit[0].title
             descriptionEdit.value = taskEdit[0].description
             observationEdit.value = taskEdit[0].observation
+
+            task = null  
+            console.log(task);
           });
 
           // deletando task ver de limpar a variavel
