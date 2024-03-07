@@ -29,6 +29,11 @@ cancel.addEventListener("click", function () {
   modal.style.display = "none";
 });
 
+function getTaskValues(task){
+  taskValues = task
+  console.log(taskValues)
+}
+
 //botao salvar fecha dialog e adiciona um gridChild por enquanto
 let save = document.getElementById("save");
 save.addEventListener("click", async function (e) {
@@ -112,6 +117,8 @@ fetch(url)
         // console.log(task);
         // console.log("Teste" + (index + 1));
 
+        getTaskValues(task)
+          
         let inputTitle = document.getElementById("titleEdit");
         inputTitle.value = task.title;
 
@@ -141,100 +148,114 @@ fetch(url)
 
 
           //atualizando os dados do card clicado
-          let btnEdit = document.getElementById("btnEdit");
-          btnEdit.addEventListener("click", async function (e) {
-            e.preventDefault();
-            let titleEdit = document.getElementById("titleEdit");
-            let titleEditValue = titleEdit.value;
-            let descriptionEdit = document.getElementById("descriptionEdit");
-            let descriptionEditValue = descriptionEdit.value;
-            let observationEdit = document.getElementById("observationEdit");
-            let observationEditValue = observationEdit.value;
-
-            
-            const gridchildElement = document.getElementById("gridchild");
-
-            let data = {
-              id,
-              titleEditValue,
-              descriptionEditValue,
-              observationEditValue,
-            };
-            const body = JSON.stringify(data);
-            // console.log(bodyEdit);
-            let resEdit = await fetch(url, {
-              method: "PUT",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: body, 
-            });
-            // gridchildElement.style.display = "none";
-            let taskEdit = await resEdit.json();
-            
-            
-            //pegar valor dos inputs depois do PUT e colocar no gridchild para nao precisar dar um F5 
-            modalEdit.style.display = "none";
-            // jogar taskEdit para os valores do input quando abre o modal
-
-            // adicionando um novo card quando o put termina 
-            // const gridChildEdit = document.createElement("div");
-            gridChild.innerHTML = `
-            <div class="gridChild contentContainer" id="gridChild_${index + 1} data-id="${task.id}">
-              <div class="contentChild">
-                  <label>${taskEdit[0].title}</label>
-              </div>
-              <div class="contentChild1">
-                  <label>${taskEdit[0].description}</label>
-              </div>
-              <div class="contentChild2">
-                  <label>${taskEdit[0].observation}</label>
-              </div>
-            </div>
-            `;
-            
-            // analisar isso
-            gridChild.classList.add("gridChild");
-            titleEdit.value = taskEdit[0].title
-            descriptionEdit.value = taskEdit[0].description
-            observationEdit.value = taskEdit[0].observation
-
-            task = null  
-            console.log(task);
-          });
-
+          
           // deletando task ver de limpar a variavel
-          btnDelete.addEventListener("click", function (e){
-            e.preventDefault()
-            // import {task} from dataObject
-            let id = task.id
-            let data = {
-              id,
-            };
-            const body = JSON.stringify(data);
-            // console.log(body);
-            fetch(url, {
-              method: "DELETE",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: body, 
-            });
- 
-            // delete [data]
-            // console.log(data)
-            btnDelete.style.display = "none";
-            modalEdit.style.display = "none";
-            gridChild.style.display = "none";
-            // pegar id da task aberta no dialog para mandar para o back 
-            // DELETE task WHERE ${id} dar um jeito de puxar o id somente de cadas task quando div de gridchild e clicada
-          })
+          
         });
 
       grid.appendChild(gridChild);
     });
   });
 
+async function editar(){
+  getTaskValues(taskValues)
+
+      let titleEdit = document.getElementById("titleEdit");
+      let titleEditValue = titleEdit.value;
+      let descriptionEdit = document.getElementById("descriptionEdit");
+      let descriptionEditValue = descriptionEdit.value;
+      let observationEdit = document.getElementById("observationEdit");
+      let observationEditValue = observationEdit.value;
+
+      
+      const gridchildElement = document.getElementById("gridchild");
+
+      let data = {
+        id,
+        titleEditValue,
+        descriptionEditValue,
+        observationEditValue,
+      };
+      const body = JSON.stringify(data);
+      // console.log(bodyEdit);
+      let resEdit = await fetch(url, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: body, 
+      });
+      // gridchildElement.style.display = "none";
+      let taskEdit = await resEdit.json();
+      
+      
+      //pegar valor dos inputs depois do PUT e colocar no gridchild para nao precisar dar um F5 
+      modalEdit.style.display = "none";
+      // jogar taskEdit para os valores do input quando abre o modal
+
+      // adicionando um novo card quando o put termina 
+      const gridChild = document.createElement("div");
+      gridChild.innerHTML = `
+      <div class="gridChild contentContainer" id="gridChild_${index + 1} data-id="${task.id}">
+        <div class="contentChild">
+            <label>${taskEdit[0].title}</label>
+        </div>
+        <div class="contentChild1">
+            <label>${taskEdit[0].description}</label>
+        </div>
+        <div class="contentChild2">
+            <label>${taskEdit[0].observation}</label>
+        </div>
+      </div>
+      `;
+      
+      // analisar isso
+      gridChild.classList.add("gridChild");
+      titleEdit.value = taskEdit[0].title
+      descriptionEdit.value = taskEdit[0].description
+      observationEdit.value = taskEdit[0].observation
+
+      // task = null  
+      console.log(task);
+}
+
+let btnEdit = document.getElementById("btnEdit");
+btnEdit.addEventListener("click", async function (e) {
+  e.preventDefault();
+})
+
+function deletar(){
+  getTaskValues(taskValues)
+    // import {task} from dataObject
+    let id = taskValues.id
+    let data = {
+      id,
+    };
+    const body = JSON.stringify(data);
+    // console.log(body);
+    fetch(url, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: body, 
+    });
+
+    // delete [data]
+    // console.log(data)
+    btnDelete.style.display = "none";
+    modalEdit.style.display = "none";
+    gridChild.style.display = "none"; // dar um jeito de fazer sumir o gridchild (CARD) que foi excluido
+  // pegar id da task aberta no dialog para mandar para o back 
+  // DELETE task WHERE ${id} dar um jeito de puxar o id somente de cadas task quando div de gridchild e clicada
+
+}
+let btnDelete = document.getElementById("btnDelete");
+btnDelete.addEventListener("click", function (e){
+  e.preventDefault()
+  // getTaskValues(task)
+  deletar()
+})
 //terminar as partes do CRUD editar e excluir
 //após isso comear a ver o crud do usuário
 
@@ -262,7 +283,7 @@ btnCloseEdit.addEventListener("click", function (e) {
   modalEdit.style.display = "none";
 });
 
-let btnDelete = document.getElementById("btnDelete")
+
 let iconDelete = document.getElementById("iconDelete");
 
 let isVisible = false;
